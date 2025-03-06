@@ -12,6 +12,8 @@ RESULTS_FILE_PATH = "Data/results.txt"
 
 
 def validate_file(file_path: str, required_headers: list[str]) -> bool:
+    """Validates the file at the given path and creates it if it does not exist."""
+
     folder_path = os.path.dirname(file_path)
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
@@ -33,6 +35,8 @@ def validate_file(file_path: str, required_headers: list[str]) -> bool:
 
 
 def load_questions() -> list[Question]:
+    """Loads questions from the questions file."""
+
     headers = ["id", "title", "answer", "is_enabled", "choices"]
 
     if not validate_file(QUESTIONS_FILE_PATH, headers):
@@ -62,6 +66,8 @@ def load_questions() -> list[Question]:
 
 
 def save_questions(questions: list[Question]) -> None:
+    """Saves the questions to the questions file."""
+
     headers = ["id", "title", "answer", "is_enabled", "choices"]
 
     with open(QUESTIONS_FILE_PATH, "w", newline="") as file:
@@ -73,6 +79,8 @@ def save_questions(questions: list[Question]) -> None:
 
 
 def load_profile_with_statistics(profile_name: str) -> Profile:
+    """Loads a profile with statistics from the profiles file."""
+
     headers = ["id", "name"]
     default_profile = Profile("0", "default", {})
     # If profile file has not been created or is invalid, correct it and return a default profile
@@ -101,6 +109,8 @@ def load_profile_with_statistics(profile_name: str) -> Profile:
 
 
 def create_new_profile(profile: Profile) -> bool:
+    """Creates a new profile in the profiles file."""
+
     headers = ["id", "name"]
 
     validate_file(PROFILES_FILE_PATH, headers)
@@ -121,6 +131,8 @@ def create_new_profile(profile: Profile) -> bool:
 
 
 def load_profile_with_statistics(profile_name: str) -> Profile:
+    """Loads a profile with statistics from the profiles file."""
+
     headers = ["id", "name"]
     default_profile = Profile("0", "default", {})
     # If profile file has not been created or is invalid, correct it and return a default profile
@@ -149,6 +161,8 @@ def load_profile_with_statistics(profile_name: str) -> Profile:
 
 
 def load_profile_statistics(profile: Profile) -> Profile:
+    """Loads the question statistics for a profile."""
+
     headers = [
         "profile_id",
         "question_id",
@@ -160,7 +174,6 @@ def load_profile_statistics(profile: Profile) -> Profile:
     if not validate_file(QUESTIONS_STATISTICS_FILE_PATH, headers):
         return Profile(profile.id, profile.name, {})
 
-    # Load the question statistics
     question_statistics = {}
     with open(QUESTIONS_STATISTICS_FILE_PATH, "r") as file:
         reader = csv.DictReader(file)
@@ -182,6 +195,8 @@ def load_profile_statistics(profile: Profile) -> Profile:
 
 
 def save_question_statistics(profile: Profile) -> None:
+    """Saves the question statistics for a profile."""
+
     if not profile.question_statistics:
         return
 
@@ -227,6 +242,8 @@ def save_question_statistics(profile: Profile) -> None:
 
 # Loads all profile names from file
 def load_profile_names() -> list[Profile]:
+    """Loads all profile names from the profiles file."""
+
     profiles = []
     with open(PROFILES_FILE_PATH, "r") as file:
         reader = csv.DictReader(file)
@@ -239,6 +256,8 @@ def load_profile_names() -> list[Profile]:
 def export_test_result(
     test_length: int, correct_answers: int, profile: Profile
 ) -> None:
+    """Exports the test results to the results file."""
+
     score = round(correct_answers / test_length * 100, 1)
     completion_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -250,6 +269,8 @@ def export_test_result(
 
 
 def find_max_id(id_column_name: str, file_path: str) -> int:
+    """Finds the maximum id in the file."""
+
     max_id = -1
     with open(file_path) as file:
         reader = csv.DictReader(file)
@@ -264,8 +285,10 @@ def find_max_id(id_column_name: str, file_path: str) -> int:
 
 
 def find_profile_max_id() -> int:
+    """Finds the maximum profile id in the profiles file."""
     return find_max_id("id", PROFILES_FILE_PATH)
 
 
 def find_questions_max_id() -> int:
+    """Finds the maximum question id in the questions file."""
     return find_max_id("id", QUESTIONS_FILE_PATH)

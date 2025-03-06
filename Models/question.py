@@ -24,3 +24,6 @@ class Question:
 
     def to_choices_string(self):
         return "|".join(self.choices) if self.choices else ""
+
+    def __str__(self):
+        return f"Question: {self.title}\nAnswer: {self.answer}\n Enabled: {self.is_enabled}"

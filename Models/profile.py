@@ -5,6 +5,8 @@ from Models.question_statistics import QuestionStatistics
 
 @dataclass
 class Profile:
+    """Profile class to store user profile information"""
+
     id: int
     name: str
     question_statistics: dict[
@@ -23,3 +25,6 @@ class Profile:
 
     def get_statistics_for_question(self, question_id: int) -> QuestionStatistics:
         return self.question_statistics.get(question_id)
+
+    def __str__(self):
+        return f"Profile: {self.name}"

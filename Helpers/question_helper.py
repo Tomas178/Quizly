@@ -6,6 +6,8 @@ import random
 def get_random_questions(
     questions: list[Question], profile: Profile, k: int = 1
 ) -> Question:
+    """Based on the user's profile, return a random question."""
+
     weighted_questions = []
     weights = []
     for question in questions:
@@ -20,6 +22,8 @@ def get_random_questions(
 
 
 def is_enough_questions(questions: list[Question], mode: str) -> bool:
+    """Checks if there are enough questions to start the practice or test mode."""
+
     if len(questions) < 5:
         print(f"Add {5 - len(questions)} more questions to begin the {mode}.")
         return False
@@ -28,6 +32,8 @@ def is_enough_questions(questions: list[Question], mode: str) -> bool:
 
 
 def is_enough_enabled_questions(questions: list[Question], mode: str) -> bool:
+    """Checks if there are enough enabled questions to start the practice or test mode."""
+
     enabled_questions_count = 0
     for question in questions:
         enabled_questions_count += 1 if question.is_enabled else 0
@@ -42,6 +48,8 @@ def is_enough_enabled_questions(questions: list[Question], mode: str) -> bool:
 
 
 def get_enabled_questions(questions: list[Question]) -> list[Question]:
+    """Returns a list of enabled questions."""
+
     enabled_questions = []
     for question in questions:
         if question.is_enabled:
@@ -51,6 +59,8 @@ def get_enabled_questions(questions: list[Question]) -> list[Question]:
 
 
 def get_statistics_for_questions(questions: list[Question], profile: Profile) -> list:
+    """Returns statistics for all questions"""
+
     data = []
     for question in questions:
         stat = profile.get_statistics_for_question(question.id)

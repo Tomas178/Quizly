@@ -43,6 +43,8 @@ def main():
 
 
 def add_questions(questions: list[Question]) -> None:
+    """Allows the user to add questions to the list of questions."""
+
     print("Please enter following details to complete question addition.\n")
 
     previous_count = len(questions)
@@ -110,6 +112,8 @@ def add_questions(questions: list[Question]) -> None:
 
 
 def view_statistics(questions: list[Question], profile: Profile) -> None:
+    """Prints out the statistics for each question in the list of questions in user selected order."""
+
     print("\nWelcome to Statistics View!")
 
     if len(questions) == 0:
@@ -132,6 +136,8 @@ def view_statistics(questions: list[Question], profile: Profile) -> None:
 
 
 def disable_or_enable_questions(questions: list[Question]) -> None:
+    """Allows the user to disable or enable questions in the list of questions."""
+
     if len(questions) == 0:
         print("Unable to disable/enable questions, because there are no questions")
         return questions
@@ -166,6 +172,8 @@ def disable_or_enable_questions(questions: list[Question]) -> None:
 
 
 def practice_mode(questions: list[Question], profile: Profile) -> None:
+    """Starts practice mode where the user can practice answering questions until 'done' is entered."""
+
     print("\nWelcome to Practice Mode!")
     if not question_helper.is_enough_questions(questions, "Practice"):
         return
@@ -195,6 +203,10 @@ def practice_mode(questions: list[Question], profile: Profile) -> None:
 
 
 def test_mode(questions: list[Question], profile: Profile) -> None:
+    """
+    Starts test mode where the user can take a test with a selected number of questions. Also 'done' can be written to end the test.
+    """
+
     print("\nWelcome to Test Mode!")
     if not question_helper.is_enough_questions(questions, "Test"):
         return
@@ -234,6 +246,8 @@ def test_mode(questions: list[Question], profile: Profile) -> None:
 
 
 def select_profile(profile: Profile) -> Profile:
+    """Allows the user to select an already existing profile or create a new one."""
+
     user_choice = user_input_helper.select_profile()
 
     if profile and profile.question_statistics:
@@ -293,3 +307,6 @@ def select_profile(profile: Profile) -> Profile:
 
 if __name__ == "__main__":
     main()
+
+
+# https://github.com/Tomas178/War-game

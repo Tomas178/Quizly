@@ -3,6 +3,8 @@ from Models.question import Question
 
 
 def select_mode() -> QuizlyMode:
+    """Selects the mode for the Quizly application."""
+
     for mode in QuizlyMode:
         print(f"{mode.value}. {' '.join(mode.name.split('_')).capitalize()}")
 
@@ -19,6 +21,8 @@ def select_mode() -> QuizlyMode:
 
 
 def question_type_selection() -> int:
+    """Selects the type of question to add."""
+
     print("1. Quiz questions\n2. Free-form text questions.")
     while True:
         user_input = input("Enter a number: ")
@@ -30,6 +34,8 @@ def question_type_selection() -> int:
 
 
 def get_order_type() -> str:
+    """Gets the order type for sorting questions."""
+
     while True:
         order = (
             input("Sort questions by score 'ascending' or 'descending'?: ")
@@ -43,7 +49,9 @@ def get_order_type() -> str:
     return order
 
 
-def get_user_test_answer(choices: list[str]) -> str:
+def get_user_quiz_answer(choices: list[str]) -> str:
+    """Gets the user's answer for a multiple choice question."""
+
     while True:
         user_answer = input("Enter your answer: ").strip().capitalize()
         if user_answer == "Done":
@@ -55,6 +63,8 @@ def get_user_test_answer(choices: list[str]) -> str:
 
 
 def get_user_test_length(questions: list[Question]) -> int:
+    """Gets the number of questions to test the user on."""
+
     enabled_questions_count = 0
     for question in questions:
         enabled_questions_count += 1 if question.is_enabled else 0
@@ -75,6 +85,8 @@ def get_user_test_length(questions: list[Question]) -> int:
 
 
 def select_profile() -> str:
+    """Asks user if they would like to select or create a new profile."""
+
     print("Would you like to select or create a new profile?")
     while True:
         user_input = input("Enter 'select' or 'create': ").lower().strip()
@@ -85,6 +97,8 @@ def select_profile() -> str:
 
 
 def check_new_profile_name_validity(profile_name: str) -> bool:
+    """Checks if the new profile name is valid."""
+
     if not profile_name:
         print("Profile name cannot be empty!")
         return False
@@ -95,6 +109,8 @@ def check_new_profile_name_validity(profile_name: str) -> bool:
 
 
 def add_another_question() -> bool:
+    """Asks the user if they would like to add another question"""
+
     while True:
         decision = (
             input("\nWould you like to add another question? [y/n]: ").strip().lower()
