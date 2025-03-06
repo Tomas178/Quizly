@@ -193,7 +193,7 @@ sys.exit("\nThanks for playing!")
 ### Data
 - **id** – Unique number for profile for easier access.
 - **name** – Name of the profile.
-- **question_statistics** – Dictionary of [```int QuestionStatistics```]. For storing question statistics for a profile.
+- **question_statistics** – Dictionary of [int, QuestionStatistics]. For storing question statistics for a profile.
 
 </details>
 
