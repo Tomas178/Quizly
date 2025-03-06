@@ -182,6 +182,8 @@ sys.exit("\nThanks for playing!")
 <details>
 <summary><h3>Profile</h3></summary>
 <h4>Data</h4>
+<summary><h3>Profile</h3></summary>
+<h4>Data</h4>
 - <b>id</b> – Unique number for profile for easier access.
 - <b>name</b> – Name of the profile.
 - <b>question_statistics</b> – Dictionary of [```int QuestionStatistics```]. For storing question statistics for a profile.
@@ -189,6 +191,8 @@ sys.exit("\nThanks for playing!")
 </details>
 
 <details>
+<summary><h3>Question</h3></summary>
+<h4>Data</h4>
 <summary><h3>Question</h3></summary>
 <h4>Data</h4>
 - <b>id</b> – Unique id for a question.
@@ -200,6 +204,8 @@ sys.exit("\nThanks for playing!")
 </details>
 
 <details>
+<summary><h3>Question Statistics</h3></summary>
+<h4>Data</h4>
 <summary><h3>Question Statistics</h3></summary>
 <h4>Data</h4>
 - <b>times_answered</b> – Contains total amount that the question has been answered by the profile.
