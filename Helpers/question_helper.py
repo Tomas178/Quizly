@@ -1,6 +1,6 @@
+import random
 from Models.question import Question
 from Models.profile import Profile
-import random
 
 
 def get_random_questions(
@@ -47,7 +47,7 @@ def is_enough_enabled_questions(questions: list[Question], mode: str) -> bool:
         return True
 
 
-def get_enabled_questions(questions: list[Question]) -> list[Question]:
+def get_test_questions(questions: list[Question], test_length: int) -> list[Question]:
     """Returns a list of enabled questions."""
 
     enabled_questions = []
@@ -55,7 +55,8 @@ def get_enabled_questions(questions: list[Question]) -> list[Question]:
         if question.is_enabled:
             enabled_questions.append(question)
 
-    return enabled_questions
+    random.shuffle(enabled_questions)
+    return enabled_questions[:test_length]
 
 
 def get_statistics_for_questions(questions: list[Question], profile: Profile) -> list:

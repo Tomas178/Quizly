@@ -213,12 +213,11 @@ def test_mode(questions: list[Question], profile: Profile) -> None:
     elif not question_helper.is_enough_enabled_questions(questions, "Test"):
         return
 
-    enabled_questions = question_helper.get_enabled_questions(questions)
     test_length = user_input_helper.get_user_test_length(questions)
+    test_questions = question_helper.get_test_questions(questions, test_length)
     correct_answers = 0
-    random.shuffle(enabled_questions)
 
-    for question in enabled_questions[:test_length]:
+    for question in test_questions:
         print("When you want to end Test Mode enter 'done'")
 
         correct_answer = question.answer
