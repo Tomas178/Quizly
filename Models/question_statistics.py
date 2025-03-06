@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class QuestionStatistics:
+    """Class that stores statistics about question"""
+
     times_answered: int = 0
     times_answered_correctly: int = 0
     weight: float = 1.0

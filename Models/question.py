@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class Question:
+    """Class that stores information about question"""
+
     id: int
     title: str
     answer: str
