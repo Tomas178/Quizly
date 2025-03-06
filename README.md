@@ -4,7 +4,8 @@
 
 <details>
 
-<summary><h3>1. Adding questions.</h3></summary>
+<summary><strong>1. Adding questions.</strong></summary>
+
 ```python
 def add_questions(questions: list[Question]) -> None:
 ```
@@ -26,7 +27,8 @@ else:
 </details>
 
 <details>
-<summary><h3>2. View statistics of questions based on profile</h3></summary>
+<summary><strong>2. View statistics of questions based on profile</strong></summary>
+
 ```python
 def view_statistics(questions: list[Question], profile: Profile) -> None:
 ```
@@ -49,7 +51,8 @@ print()
 </details>
 
 <details>
-<summary><h3>3. Disable/enable questions</h3></summary>
+<summary><strong>3. Disable/enable questions</strong></summary>
+
 ```python
 def disable_or_enable_questions(questions: list[Question]) -> None:
 ```
@@ -91,7 +94,8 @@ print()
 </details>
 
 <details>
-<summary><h3>4. Practice mode for practicing</h3></summary>
+<summary><strong>4. Practice mode for practicing</strong></summary>
+
 ```python
 def practice_mode(questions: list[Question], profile: Profile) -> None:
 ```
@@ -108,7 +112,8 @@ elif not question_helper.is_enough_enabled_questions(questions, "Practice"):
 </details> 
 
 <details>
-<summary><h3>5. Test mode for testing one's knowledge</h3></summary>
+<summary><strong>5. Test mode for testing one's knowledge</strong></summary>
+
 ```python
 def test_mode(questions: list[Question], profile: Profile) -> None:
 ```
@@ -135,7 +140,8 @@ csv_helper.export_test_result(test_length, correct_answers, profile)
 </details>
 
 <details>
-<summary><h3>6. Select profile</h3></summary>
+<summary><strong>6. Select profile</strong></summary>
+
 ```python
 def select_profile(profile: Profile) -> Profile:
 ```
@@ -167,7 +173,8 @@ return True
 </details>
 
 <details>
-<summary><h3>7. Exit the quizly</h3></summary>
+<summary><strong>7. Exit the quizly</strong></summary>
+
 ```python
 print("\nSaving...")
 csv_helper.save_questions(questions)
@@ -180,9 +187,7 @@ sys.exit("\nThanks for playing!")
 
 ## Models
 <details>
-<summary><h3>Profile</h3></summary>
-<h4>Data</h4>
-<summary><h3>Profile</h3></summary>
+<summary><strong>Profile</strong></summary>
 <h4>Data</h4>
 - <b>id</b> – Unique number for profile for easier access.
 - <b>name</b> – Name of the profile.
@@ -191,26 +196,22 @@ sys.exit("\nThanks for playing!")
 </details>
 
 <details>
-<summary><h3>Question</h3></summary>
-<h4>Data</h4>
-<summary><h3>Question</h3></summary>
+<summary><strong>Question</strong></summary>
 <h4>Data</h4>
 - <b>id</b> – Unique id for a question.
 - <b>title</b> – The question itself.
 - <b>answer</b> – The correct answer of the question.
 - <b>is_enabled</b> – Says if the question is enabled/disabled.
-- <b>choices</b> – Contains all the choices for the answer if the question is a quiz. If the question is free-form then ```python choices = None```.
+- <b>choices</b> – Contains all the choices for the answer if the question is a quiz. If the question is free-form then `choices = None`
 
 </details>
 
 <details>
-<summary><h3>Question Statistics</h3></summary>
-<h4>Data</h4>
-<summary><h3>Question Statistics</h3></summary>
+<summary><strong>Question Statistics</strong></summary>
 <h4>Data</h4>
 - <b>times_answered</b> – Contains total amount that the question has been answered by the profile.
 - <b>times_answered_correctly</b> – Contains total amount that the questions has been answered correctly by the profile.
-* <b>weight</b> – Maximum weight that the question can have. [0.1;1] is the interval of weight.
+- <b>weight</b> – Maximum weight that the question can have. [0.1;1] is the interval of weight.
 - <b>WEIGHT_INCREMENT</b> – Value that the weight is incremented or decremented based on if the answer is correct or incorrect.
 - <b>MAX_WEIGHT</b> – Maximum weight that the question can have.
 - <b>MIN_WEIGHT</b> – Minimum weight that the question can have.
