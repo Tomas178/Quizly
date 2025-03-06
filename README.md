@@ -49,7 +49,7 @@ else:
 <summary>**Question**</summary>
 ### Data
 - **id** – Unique id for a question.
-- **title** – It is a question basically.
+- **title** – The question itself.
 - **answer** – The correct answer of the question.
 - **is_enabled** – Says if the question is enabled/disabled.
 - **choices** – Contains all the choices for the answer if the question is a quiz. If the question is free-form then ```python choices = None```.
@@ -57,7 +57,7 @@ else:
 </details>
 
 <details>
-<summary>**Question Statistics**</summary>
+<summary><h2>Question Statistics</h2></summary>
 ### Data
 - **times_answered** – Contains total amount that the question has been answered by the profile.
 - **times_answered_correctly** – Contains total amount that the questions has been answered correctly by the profile.
