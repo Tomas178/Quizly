@@ -186,36 +186,61 @@ sys.exit("\nThanks for playing!")
 
 
 ## Models
+
 <details>
 <summary><strong>Profile</strong></summary>
-<h4>Data</h4>
-- <b>id</b> – Unique number for profile for easier access.
-- <b>name</b> – Name of the profile.
-- <b>question_statistics</b> – Dictionary of [```int QuestionStatistics```]. For storing question statistics for a profile.
+
+### Data
+- **id** – Unique number for profile for easier access.
+- **name** – Name of the profile.
+- **question_statistics** – Dictionary of [```int QuestionStatistics```]. For storing question statistics for a profile.
 
 </details>
 
 <details>
 <summary><strong>Question</strong></summary>
-<h4>Data</h4>
-- <b>id</b> – Unique id for a question.
-- <b>title</b> – The question itself.
-- <b>answer</b> – The correct answer of the question.
-- <b>is_enabled</b> – Says if the question is enabled/disabled.
-- <b>choices</b> – Contains all the choices for the answer if the question is a quiz. If the question is free-form then `choices = None`
+
+### Data
+- **id** – Unique id for a question.
+- **title** – The question itself.
+- **answer** – The correct answer of the question.
+- **is_enabled** – Says if the question is enabled/disabled.
+- **choices** – Contains all the choices for the answer if the question is a quiz. If the question is free-form then `choices = None`
 
 </details>
 
 <details>
 <summary><strong>Question Statistics</strong></summary>
-<h4>Data</h4>
-- <b>times_answered</b> – Contains total amount that the question has been answered by the profile.
-- <b>times_answered_correctly</b> – Contains total amount that the questions has been answered correctly by the profile.
-- <b>weight</b> – Maximum weight that the question can have. [0.1;1] is the interval of weight.
-- <b>WEIGHT_INCREMENT</b> – Value that the weight is incremented or decremented based on if the answer is correct or incorrect.
-- <b>MAX_WEIGHT</b> – Maximum weight that the question can have.
-- <b>MIN_WEIGHT</b> – Minimum weight that the question can have.
+
+### Data
+- **times_answered** – Contains total amount that the question has been answered by the profile.
+- **times_answered_correctly** – Contains total amount that the questions has been answered correctly by the profile.
+- **weight** – Maximum weight that the question can have. [0.1;1] is the interval of weight.
+- **WEIGHT_INCREMENT** – Value that the weight is incremented or decremented based on if the answer is correct or incorrect.
+- **MAX_WEIGHT** – Maximum weight that the question can have.
+- **MIN_WEIGHT** – Minimum weight that the question can have.
 </details>
+
+## Enumerators
+
+<details>
+<summary><strong>QuizlyMode</strong></summary>
+
+### Description
+The `QuizlyMode` enumerator defines different modes available in the Quizly application.
+
+### Values
+
+- **ADDING_QUESTIONS (1)** – Allows the user to add new questions to the system.
+- **STATISTICS_VIEWING (2)** – Enables the user to view question statistics.
+- **DISABLE_OR_ENABLE_QUESTIONS (3)** – Provides the option to enable or disable questions.
+- **PRACTICE_MODE (4)** – Starts practice mode, where users can answer questions without scoring.
+- **TEST_MODE (5)** – Starts test mode, where users answer questions with scoring.
+- **PROFILE_SELECT (6)** – Allows users to select or switch profiles.
+- **QUIT (7)** – Exits the application.
+
+</details>
+
 
 
 ## Additional modules
