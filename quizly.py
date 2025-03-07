@@ -22,6 +22,8 @@ def main():
             match mode:
                 case QuizlyMode.ADDING_QUESTIONS:
                     add_questions(questions)
+                    csv_helper.save_questions(questions)
+                    csv_helper.save_question_statistics(profile)
                     profile.init_statistics(questions)
                 case QuizlyMode.STATISTICS_VIEWING:
                     view_statistics(questions, profile)
@@ -182,9 +184,9 @@ def disable_or_enable_questions(questions: list[Question]) -> None:
             print("Invalid ID!. Enter again.")
             continue
 
-        print(f"\nSuccessfully changed question {question_id} is_enabled status!\n")
-        print(tabulate([data[index]], headers=columns, tablefmt="grid"))
-        print()
+        print(
+            f"\nSuccessfully changed question {question_id} is_enabled status to {not data[index][3]}\n"
+        )
         return
 
 
@@ -216,7 +218,9 @@ def practice_mode(questions: list[Question], profile: Profile) -> None:
                 print("Exiting Practice Mode...")
                 break
 
-        game_helper.check_answer(user_answer, correct_answer, profile, question)
+        game_helper.is_user_answer_correct(
+            user_answer, correct_answer, profile, question
+        )
 
 
 def test_mode(questions: list[Question], profile: Profile) -> None:

@@ -15,7 +15,9 @@ def start_quiz(question: Question) -> str:
     for i, choice in enumerate(choices):
         print(f"{AVAILABLE_QUIZ_LETTERS[i]}. {choice}")
 
-    user_answer = user_input_helper.get_user_quiz_answer(AVAILABLE_QUIZ_LETTERS)
+    user_answer = user_input_helper.get_user_quiz_answer(
+        AVAILABLE_QUIZ_LETTERS[: len(choices)]
+    )
 
     if user_answer == "Done":
         return user_answer

@@ -60,12 +60,15 @@ def get_user_quiz_answer(choices: list[str]) -> str:
     """Gets the user's answer for a multiple choice question."""
 
     while True:
-        user_answer = input("Enter your answer: ").strip().capitalize()
-        if user_answer == "Done":
-            return user_answer
-        elif user_answer not in choices:
+        try:
+            user_answer = input("Enter your answer: ").strip().capitalize()
+            if user_answer == "Done":
+                return user_answer
+            elif user_answer not in choices:
+                print("Invalid choice! Please try again.")
+                continue
+        except IndexError:
             print("Invalid choice! Please try again.")
-            continue
         return user_answer
 
 

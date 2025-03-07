@@ -119,7 +119,6 @@ def create_new_profile(profile: Profile) -> bool:
         reader = csv.DictReader(file)
         for line in reader:
             if line["name"] == profile.name:
-                print(f"Profile with name {profile.name} already exists!")
                 return False
 
     with open(PROFILES_FILE_PATH, "a", newline="") as file:
