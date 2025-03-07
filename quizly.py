@@ -2,9 +2,13 @@ import sys
 import random
 from tabulate import tabulate
 from Enumerators.quizly_mode import QuizlyMode
+from Enumerators.question_type import QuestionType
 from Helpers import user_input_helper, csv_helper, question_helper, game_helper
 from Models.question import Question
 from Models.profile import Profile
+
+MINIMUM_CHOICES_REQUIRED = 2
+MAXIMUM_CHOICES_ALLOWED = 4
 
 
 def main():
@@ -54,23 +58,29 @@ def add_questions(questions: list[Question]) -> None:
         try:
             print(f"Adding question {questions_highest_id}")
             question_type = user_input_helper.question_type_selection()
-            if question_type == 1:
+            if question_type == QuestionType.QUIZ:
                 title = input("Question: ").strip().capitalize()
                 answer = input("Answer: ").strip()
                 print("Answer is automatically added to the choices list!")
                 choices = [answer]
-                while len(choices) != 4:
+                while len(choices) != MAXIMUM_CHOICES_ALLOWED:
                     choice = input(
                         f"Choice {len(choices) + 1} (Leave empty and press 'Enter' to stop entering): "
                     ).strip()
 
                     if choice == "":
-                        if len(choices) >= 2 and len(choices) <= 4:
+                        if (
+                            len(choices) >= MINIMUM_CHOICES_REQUIRED
+                            and len(choices) <= MAXIMUM_CHOICES_ALLOWED
+                        ):
                             break
                         else:
-                            print(f"Add atleast {2 - len(choices)} more choices!")
+                            print(
+                                f"Add atleast {MINIMUM_CHOICES_REQUIRED - len(choices)} more choices!"
+                            )
                             continue
-                    elif len(choices) + 1 == 4:
+                    # +1 because we check if after the addition of the choice we have 4 choices
+                    elif len(choices) + 1 == MAXIMUM_CHOICES_ALLOWED:
                         choices.append(choice)
                         print("You have entered maximum amount of choices allowed")
                         break
@@ -84,7 +94,7 @@ def add_questions(questions: list[Question]) -> None:
                     questions.append(
                         Question(questions_highest_id, title, answer, choices=choices)
                     )
-            elif question_type == 2:
+            elif question_type == QuestionType.FREE_FORM:
                 title = input("Question: ").strip().capitalize()
                 answer = input("Answer: ").strip()
 

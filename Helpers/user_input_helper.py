@@ -1,4 +1,5 @@
 from Enumerators.quizly_mode import QuizlyMode
+from Enumerators.question_type import QuestionType
 from Models.question import Question
 
 
@@ -20,17 +21,23 @@ def select_mode() -> QuizlyMode:
     return selected_mode
 
 
-def question_type_selection() -> int:
+def question_type_selection() -> QuestionType:
     """Selects the type of question to add."""
 
-    print("1. Quiz questions\n2. Free-form text questions.")
+    for question_type in QuestionType:
+        print(
+            f"{question_type.value}. {" ".join(question_type.name.split("_")).capitalize()}"
+        )
+
     while True:
-        user_input = input("Enter a number: ")
-        if user_input not in ["1", "2"]:
-            print("Please enter 1 or 2.")
+        try:
+            user_input = int(input("Enter a number: "))
+            selected_question_type = QuestionType(user_input)
+        except ValueError:
+            print("Please enter a number.")
             continue
 
-        return int(user_input)
+        return selected_question_type
 
 
 def get_order_type() -> str:
