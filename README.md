@@ -93,9 +93,9 @@ while True:
 ```
 3. Prints out nicely formatted table of questions and its data with updated enabled/disabled status:
 ```python
-print(f"\nSuccessfully changed question {question_id} is_enabled status!\n")
-print(tabulate([data[index]], headers=columns, tablefmt="grid"))
-print()
+print(
+    f"\nSuccessfully changed question {question_id} is_enabled status to {not data[index][3]}\n"
+)
 ```
 
 </details>
@@ -245,6 +245,19 @@ The `QuizlyMode` enumerator defines different modes available in the Quizly appl
 - **TEST_MODE (5)** – Starts test mode, where users answer questions with scoring.
 - **PROFILE_SELECT (6)** – Allows users to select or switch profiles.
 - **QUIT (7)** – Exits the application.
+
+</details>
+
+<details>
+<summary><strong>QuizlyMode</strong></summary>
+
+### Description
+The `QuestionType` enumerator defines different modes available in the Quizly application.
+
+### Values
+
+- **QUIZ (1)** – Question with choices to answer.
+- **FREE_FORM (2)** – Question with text to answer.
 
 </details>
 
