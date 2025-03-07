@@ -138,9 +138,16 @@ def view_statistics(questions: list[Question], profile: Profile) -> None:
 
     reverse_order = order == "descending"
     # Using lambda, sort by score
-    data.sort(key=lambda x: x[4], reverse=reverse_order)
+    data.sort(key=lambda x: x[5], reverse=reverse_order)
 
-    columns = ["Question ID", "Title", "Answer", "is_enabled", "Score (%)"]
+    columns = [
+        "Question ID",
+        "Title",
+        "Answer",
+        "is_enabled",
+        "Times_answered",
+        "Score (%)",
+    ]
     print(tabulate(data, headers=columns, tablefmt="grid"))
     print()
 

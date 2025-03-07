@@ -70,7 +70,14 @@ def get_statistics_for_questions(questions: list[Question], profile: Profile) ->
         else:
             score = 0
         data.append(
-            [question.id, question.title, question.answer, question.is_enabled, score]
+            [
+                question.id,
+                question.title,
+                question.answer,
+                question.is_enabled,
+                stat.times_answered,
+                score,
+            ]
         )
 
     return data
