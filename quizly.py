@@ -54,7 +54,10 @@ def add_questions(questions: list[Question]) -> None:
     print("Please enter following details to complete question addition.\n")
 
     previous_count = len(questions)
-    questions_highest_id = csv_helper.find_questions_max_id() + 1
+    if previous_count != 0:
+        questions_highest_id = csv_helper.find_questions_max_id() + 1
+    else:
+        questions_highest_id = 1
 
     while True:
         try:
@@ -252,7 +255,7 @@ def test_mode(questions: list[Question], profile: Profile) -> None:
         else:
             user_answer = game_helper.start_free_form()
 
-            if user_answer == "Done":
+            if user_answer.capitalize() == "Done":
                 print("Exiting Test Mode...")
                 break
 
@@ -260,9 +263,9 @@ def test_mode(questions: list[Question], profile: Profile) -> None:
             user_answer, correct_answer, profile, question
         ):
             correct_answers += 1
-
-    game_helper.print_test_results(test_length, correct_answers)
-    csv_helper.export_test_result(test_length, correct_answers, profile)
+    if user_answer.capitalize() != "Done":
+        game_helper.print_test_results(test_length, correct_answers)
+        csv_helper.export_test_result(test_length, correct_answers, profile)
 
 
 def select_profile(profile: Profile) -> Profile:

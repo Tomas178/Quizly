@@ -15,7 +15,7 @@ class QuestionStatistics:
 
     def update_statistics(self, answered_correctly: bool) -> None:
         self.weight += (
-            self.WEIGHT_INCREMENT if answered_correctly else -self.WEIGHT_INCREMENT
+            self.WEIGHT_INCREMENT if not answered_correctly else -self.WEIGHT_INCREMENT
         )
         if self.weight > self.MAX_WEIGHT:
             self.weight = self.MAX_WEIGHT
