@@ -2,6 +2,8 @@ from enum import Enum
 
 
 class QuizlyMode(Enum):
+    """Enumerator for the mode of Quizly."""
+
     ADDING_QUESTIONS = 1
     STATISTICS_VIEWING = 2
     DISABLE_OR_ENABLE_QUESTIONS = 3
