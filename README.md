@@ -140,8 +140,9 @@ correct_answers = 0
 ```
 3. Prints out and exports the result of the test:
 ```python
-game_helper.print_test_results(test_length, correct_answers)
-csv_helper.export_test_result(test_length, correct_answers, profile)
+if user_answer.capitalize() != "Done":
+    game_helper.print_test_results(test_length, correct_answers)
+    csv_helper.export_test_result(test_length, correct_answers, profile)
 ```
 
 </details>

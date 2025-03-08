@@ -263,6 +263,7 @@ def test_mode(questions: list[Question], profile: Profile) -> None:
             user_answer, correct_answer, profile, question
         ):
             correct_answers += 1
+
     if user_answer.capitalize() != "Done":
         game_helper.print_test_results(test_length, correct_answers)
         csv_helper.export_test_result(test_length, correct_answers, profile)
