@@ -217,7 +217,7 @@ def practice_mode(questions: list[Question], profile: Profile) -> None:
         else:
             user_answer = game_helper.start_free_form()
 
-            if user_answer == "Done":
+            if user_answer.capitalize() == "Done":
                 print("Exiting Practice Mode...")
                 break
 
